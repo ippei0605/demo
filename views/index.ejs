@@ -1,0 +1,496 @@
+<%# Score Counter アプリの地点情報一覧表示画面 Ippei SUZUKI %>
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Score Counter</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+	integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+	crossorigin="anonymous">
+<script type="text/javascript"
+	src="//maps.googleapis.com/maps/api/js?key=AIzaSyCGDCL9Cf2wYuTh0Er_KiqYlgasj-BRFds">
+
+</script>
+<style type="text/css">
+.map-embed {
+	max-width: 100%;
+	height: 0;
+	margin: 0;
+	padding: 0 0 56.25%;
+	overflow: hidden;
+	position: relative;
+	top: 0;
+	left: 0;
+}
+
+.map-embed>div {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.map-embed img {
+	max-width: none;
+}
+</style>
+</head>
+
+<body>
+
+	<div class="container-fluid">
+
+		<div class="row">
+			<div class="col-xs-12 text-center">
+				<h1>Score Counter</h1>
+			</div>
+		</div>
+
+		<form id="scoreFormId" name="scoreForm" method="post" action="/scores">
+
+			<div class="row">
+				<div class="col-xs-1 text-right">
+					<p>Date</p>
+				</div>
+				<div class="col-xs-5 text-right">
+					<input type="date" class="form-control" id="dateId" name="date"
+						value="<%= date %>">
+					</p>
+				</div>
+				<div class="col-xs-1 text-right">
+					<p>Hole</p>
+				</div>
+				<div class="col-xs-5 text-right">
+					<input type="number" class="form-control" id="holeId" name="hole"
+						min="1" max="18" value="<%= hole %>">
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-6">
+					<button type="button" class="btn btn-primary btn-block"
+						id="teeShotId" name="teeShot">Tee Shot</button>
+				</div>
+
+				<div class="col-xs-6">
+					<button type="button" class="btn btn-default btn-block"
+						id="addStrokeId" name="addStroke">+1 Stroke</button>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-6 text-center">
+					<select class="form-control" id="clubId" name="club">
+						<option value="">Select Club</option>
+						<option value="Driver">Driver</option>
+						<option value="3W">3W</option>
+						<option value="5W">5W</option>
+						<option value="UT">UT</option>
+						<option value="4I">4I</option>
+						<option value="5I">5I</option>
+						<option value="6I">6I</option>
+						<option value="7I">7I</option>
+						<option value="8I">8I</option>
+						<option value="9I">9I</option>
+						<option value="PW">PW</option>
+						<option value="AW">AW</option>
+						<option value="SW">SW</option>
+						<option value="Putter">Putter</option>
+					</select> <span id="clubMessageId" class="text-danger"></span>
+				</div>
+
+				<div class="col-xs-6">
+					<button type="button"
+						class="btn btn-primary btn-block dropdown-toggle"
+						data-toggle="dropdown" id="recordId">
+						Point Record <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu">
+						<li id="resultFairwayId"><a href="#">Fairway</a></li>
+						<li id="resultRoughId"><a href="#">Rough</a></li>
+						<li id="resultGreenId"><a href="#">Green</a></li>
+						<li id="resultCreekId"><a href="#">Creek</a></li>
+						<li id="resultBunkerId"><a href="#">Bunker</a></li>
+						<li id="resultObId"><a href="#">OB</a></li>
+						<li id="resultCupinId"><a href="#">Cup in</a></li>
+					</ul>
+				</div>
+				<feildset> <input type="hidden" id="countId" name="count"
+					value=""> <input type="hidden" id="latitudeId"
+					name="latitude" value=""> <input type="hidden"
+					id="longitudeId" name="longitude" value=""> <input
+					type="hidden" id="resultId" name="result" value=""> </feildset>
+			</div>
+		</form>
+
+		<div class="row">
+			<div class="col-xs-12">
+				</br>
+				<ul class="nav nav-tabs">
+					<li class="active"><a href="#scoreTabId" data-toggle="tab">Score</a></li>
+					<li><a href="#layoutTabId" data-toggle="tab">Layout</a></li>
+				</ul>
+				</br>
+				<div id="tabId" class="tab-content">
+					<div class="tab-pane in active" id="scoreTabId">
+						<div class="table-responsive">
+							<table class="table table-hover" id="tableId">
+								<thead>
+									<tr>
+										<th style="display: none">Hole</th>
+										<th>Stroke</th>
+										<th>Club</th>
+										<th>Result</th>
+										<th>Pos</th>
+									</tr>
+								</thead>
+								<tbody>
+									<% var doc; list.forEach(function(row) { doc = row.value; %>
+									<tr>
+										<td style="display: none" id="tableHoleId"><%= doc.hole
+											%></td>
+										<td style="display: none" id="tableCountId"><%= doc.count
+											%></td>
+										<td
+											style="max-width: 300px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"><a
+											href="#" data-toggle="modal" data-target="#detail-dialog"
+											data-backdrop="static" data-backdrop="static"
+											data-keyboard="false"
+											data-action="/scores/<%= doc._id %>/<%= doc._rev %>"
+											data-count="<%= doc.count %>" data-club="<%= doc.club %>"
+											data-result="<%= doc.result %>"
+											data-latitude="<%= doc.latitude %>"
+											data-longitude="<%= doc.longitude %>"> <%= doc.count %> </a></td>
+										<td><%= doc.club %></td>
+										<td><%= doc.result %></td>
+										<td><%= doc.latitude %>,<%= doc.longitude %></td>
+									</tr>
+									<% }); %>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="tab-pane" id="layoutTabId">
+						<div class="map-embed">
+							<div id="map-canvas">Course Layout</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<hr>
+	</div>
+
+	<div class="modal" id="dialog" tabindex="-1" role="dialog"
+		aria-labelledby="modalTitle" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content"></div>
+		</div>
+	</div>
+
+	<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+		integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+		crossorigin="anonymous"></script>
+
+	<!-- 更新ダイアログ -->
+	<div class="modal" id="detail-dialog" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form id="detailScoreFormId" method="POST" action="/scores">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">&times;</span> <span class="sr-only">閉じる</span>
+						</button>
+						<h4 class="modal-title" id="modalTitle">Detail</h4>
+					</div>
+					<div class="modal-body">
+						<fieldset>
+							<div class="form-group">
+								<label for="detailCountId">Stroke</label> <input type="text"
+									class="form-control" id="detailCountId" name="count" value="">
+							</div>
+							<div class="form-group">
+								<label for="detailClubId">Club</label> <input type="text"
+									class="form-control" id="detailClubId" name="club" value="">
+							</div>
+							<div class="form-group">
+								<label for="detailResultId">Result</label> <input type="text"
+									class="form-control" id="detailResultId" name="result" value="">
+							</div>
+							<div class="form-group">
+								<label for="detailLatitudeId">Latitude</label> <input
+									type="text" class="form-control" id="detailLatitudeId"
+									name="latitude" value="">
+							</div>
+							<div class="form-group">
+								<label for="detailLongitudeId">Longitude</label> <input
+									type="text" class="form-control" id="detailLongitudeId"
+									name="longitude" value="">
+							</div>
+							<div>
+								<input type="hidden" id="detailDateId" name="date" value="">
+								<input type="hidden" id="detailHoleId" name="hole" value="">
+							</div>
+						</fieldset>
+					</div>
+					<div class="modal-footer">
+						<button id="detailSaveId" type="submit" class="btn btn-primary">Save</button>
+						<button id="detailCancelId" type="button" class="btn btn-default"
+							data-dismiss="modal">Cancel</button>
+						<button id="detailDeleteId" type="button" class="btn btn-danger"
+							data-dismiss="modal">Delete</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		var map;
+
+		var list = <%- JSON.stringify(list) %>;
+
+		var targetList = exportListByHole($('#holeId').val());
+		targetList.forEach(function(doc){
+	    console.log(doc);
+		});
+
+		function exportListByHole(hole) {
+			var targetList = [];
+			list.forEach(function(doc) {
+				if (hole === doc.value.hole) {
+					targetList.push(doc.value);
+				}
+			});
+			return targetList;
+		}
+
+		function viewMap() {
+
+			var date = $('#dateId').val();
+			var hole = $('#holeId').val();
+			console.log(date + ', ' + hole);
+
+			// キャンパスの要素を取得する
+			var canvas = document.getElementById('map-canvas');
+
+			// 中心の位置座標を指定する
+			var latlng = new google.maps.LatLng(35.608907, 138.923589);
+
+			// 地図のオプションを設定する
+			var mapOptions = {
+				zoom : 18, // ズーム値
+				center : latlng, // 中心座標 [latlng]
+				mapTypeId : google.maps.MapTypeId.SATELLITE
+			};
+
+			// [canvas]に、[mapOptions]の内容の、地図のインスタンス([map])を作成する
+			map = new google.maps.Map(canvas, mapOptions);
+
+			var marker0 = new google.maps.Marker({
+				map : map,
+				position : new google.maps.LatLng(35.609357, 138.925547),
+				title : '0'
+			});
+			var marker1 = new google.maps.Marker({
+				map : map,
+				position : new google.maps.LatLng(35.608907, 138.923589),
+				title : '1'
+			});
+			var marker2 = new google.maps.Marker({
+				map : map,
+				position : new google.maps.LatLng(35.608356, 138.922905),
+				title : '2'
+			});
+
+			// LatLng 配列
+			var flightPlanCoordinates = [
+					new google.maps.LatLng(35.609357, 138.925547),
+					new google.maps.LatLng(35.608907, 138.923589),
+					new google.maps.LatLng(35.608356, 138.922905) ];
+			// Polyline オブジェクト
+			var flightPath = new google.maps.Polyline({
+				map : map,
+				path : flightPlanCoordinates, //ポリラインの配列
+				strokeColor : '#FF0000', //色（#RRGGBB形式）
+				strokeOpacity : 1.0, //透明度　0.0～1.0（デフォルト）
+				strokeWeight : 2
+			//太さ（単位ピクセル）
+			});
+		}
+
+		viewMap();
+
+		function recordPosition() {
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(doSuccess, doError);
+			} else {
+				window.alert("このブラウザではGeolocationが使えません");
+			}
+		};
+
+		// 位置情報の取得に成功した場合
+		function doSuccess(pos) {
+			$('#latitudeId').val(pos.coords.latitude);
+			$('#longitudeId').val(pos.coords.longitude);
+			$('#scoreFormId').submit();
+		};
+
+		// 位置情報の取得に失敗した場合
+		function doError(error) {
+			// エラーコードに合わせたエラー内容をアラート表示
+			alert('[' + error.code + ']' + error.message);
+		};
+
+		// ボタン制御 (有効/無効)
+		function setButton(teeShotDisabled, addStrokeDisabled, recordDisabled) {
+			$('#teeShotId').prop('disabled', teeShotDisabled);
+			$('#addStrokeId').prop('disabled', addStrokeDisabled);
+			$('#recordId').prop('disabled', recordDisabled);
+		};
+
+		// ダイアログのボタン制御 (有効/無効)
+		function disableDetailButton() {
+			$('#detailSaveId').prop('disabled', true);
+			$('#detailCancelId').prop('disabled', true);
+			$('#detailDeleteId').prop('disabled', true);
+		};
+
+		// 地点情報を表示する。
+		function viewTable() {
+			var count = 0;
+			// TeeShot 地点未記録
+			setButton(false, true, true);
+
+			$('#tableId tbody tr').each(function() {
+				if ($('#holeId').val() === $(this).find('td:eq(0)').html()) {
+					if ($(this).find('td:eq(1)').html() === '0') {
+						// TeeShot 地点記録済み
+						setButton(true, false, false);
+					}
+					$(this).show();
+					count++;
+				} else {
+					$(this).hide();
+				}
+			});
+			$('#countId').val(count);
+		};
+
+		// 結果記録 共通処理
+		function recordResult() {
+			if ($('#clubId').val() === '') {
+				$('#clubMessageId').html('Please choose the club.');
+				$('#clubId').focus();
+			} else {
+				recordPosition();
+			}
+		};
+
+		$(document).ready(function() {
+			viewTable();
+
+			$('#holeId').change(function() {
+				viewTable();
+			});
+			$('#dateId').change(function() {
+				var date = $('#dateId').val();
+				$(location).attr('href', '/?date=' + date + '&hole=1');
+			});
+
+			// ティーショット (ホール最初の地点記録)
+			$('#teeShotId').on('click', function() {
+				$('#clubId').val('');
+				recordPosition();
+			});
+			// ストローク追加 (1打罰など)
+			$('#addStrokeId').on('click', function() {
+				$('#clubId').val('');
+				$('#resultId').val('1 penalty');
+				recordPosition();
+			});
+
+			// 結果記録 Fairway
+			$('#resultFairwayId').on('click', function() {
+				$('#resultId').val('Fairway');
+				recordResult();
+			});
+			// 結果記録 Rough
+			$('#resultRoughId').on('click', function() {
+				$('#resultId').val('Rough');
+				recordResult();
+			});
+			// 結果記録 Green
+			$('#resultGreenId').on('click', function() {
+				$('#resultId').val('Green');
+				recordResult();
+			});
+			// 結果記録 Creek
+			$('#resultCreekId').on('click', function() {
+				$('#resultId').val('Creek');
+				recordResult();
+			});
+			// 結果記録 Bunker
+			$('#resultBunkerId').on('click', function() {
+				$('#resultId').val('Bunker');
+				recordResult();
+			});
+			// 結果記録 OB
+			$('#resultObId').on('click', function() {
+				$('#resultId').val('OB');
+				recordResult();
+			});
+			// 結果記録 Cup in
+			$('#resultCupinId').on('click', function() {
+				$('#resultId').val('Cup in');
+				recordResult();
+			});
+
+			// Submit 中はボタンを無効化する。
+			$('#scoreFormId').on('submit', function() {
+				setButton(true, true, true);
+			});
+
+			// Submit 中はボタンを無効化する。
+			$('#detailScoreFormId').on('submit', function() {
+				disableDetailButton();
+			});
+
+			// ダイアログに値をセットする。
+			$('#detail-dialog').on('show.bs.modal', function(event) {
+				var relatedTarget = $(event.relatedTarget);
+				$('#detailScoreFormId').attr('action', relatedTarget.data('action'));
+				$('#detailCountId').val(relatedTarget.data('count'));
+				$('#detailClubId').val(relatedTarget.data('club'));
+				$('#detailResultId').val(relatedTarget.data('result'));
+				$('#detailLatitudeId').val(relatedTarget.data('latitude'));
+				$('#detailLongitudeId').val(relatedTarget.data('longitude'));
+				$('#detailDateId').val($('#dateId').val());
+				$('#detailHoleId').val($('#holeId').val());
+			});
+
+			// 地点情報を削除する。
+			$('#detailDeleteId').on('click', function() {
+				var form = $('#detailScoreFormId');
+				var action = $('#detailScoreFormId').attr('action');
+				form.attr('action', action + '/delete');
+				form.submit();
+			});
+
+			// タブを表示した時にリサイズする。
+			$('a[data-toggle="tab"]').on('shown.bs.tab', function() {
+				google.maps.event.trigger(map, 'resize');
+			});
+		});
+	</script>
+</body>
+
+</html>
