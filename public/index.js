@@ -1,6 +1,9 @@
+/* Score Counter アプリの地点情報一覧表示画面の JavaScript */
 var map;
+var centerLatlng;
 
 function viewMap() {
+
 	// キャンパスの要素を取得する
 	var canvas = document.getElementById('map-canvas');
 
@@ -41,8 +44,8 @@ function viewMap() {
 	var cupLng = coordinates[pointList.length - 1].lng();
 	var centerLat = (teeLat + cupLat) / 2;
 	var centerLng = (teeLng + cupLng) / 2;
-	var latlng = new google.maps.LatLng(centerLat, centerLng);
-	map.setCenter(latlng);
+	centerLatlng = new google.maps.LatLng(centerLat, centerLng);
+	map.setCenter(centerLatlng);
 
 	// 線を引く。
 	new google.maps.Polyline({
@@ -226,5 +229,6 @@ $(document).ready(function() {
 	// タブを表示した時にリサイズする。
 	$('a[data-toggle="tab"]').on('shown.bs.tab', function() {
 		google.maps.event.trigger(map, 'resize');
+		map.setCenter(centerLatlng);
 	});
 });
