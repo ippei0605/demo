@@ -23,8 +23,3 @@ exports.DB_NAME = DB_NAME;
 
 /** データベース接続 */
 exports.cloudant = require('cloudant')(cloudantCreds.url);
-
-/** 本日 YYYY-MM-DD */
-var moment = require('moment');
-moment.locale('ja');
-exports.TODAY = moment().format('YYYY-MM-DD');

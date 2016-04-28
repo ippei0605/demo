@@ -12,6 +12,23 @@ var context = require('../utils/context');
 var cloudant = context.cloudant;
 var db = cloudant.db.use(context.DB_NAME);
 
+/** Hole, Count を昇順で比較する。 */
+var compareHoleCountAscending = function(a, b) {
+	if (a.value.hole < b.value.hole) {
+		return -1;
+	}
+	if (a.value.hole > b.value.hole) {
+		return 1;
+	}
+	if (a.value.count < b.value.count) {
+		return -1;
+	}
+	if (a.value.count > b.value.count) {
+		return 1;
+	}
+	return 0;
+};
+
 /**
  * 地点情報の一覧を取得する。
  *
@@ -19,17 +36,15 @@ var db = cloudant.db.use(context.DB_NAME);
  *      {@link https://github.com/apache/couchdb-nano#dbviewdesignname-viewname-params-callback}
  */
 exports.list = function(date, callback) {
-
 	db.view('scores', 'list', {
 		descending : false,
 		key : date
-	}, callback);
-
-	/*
-	db.view('scores', 'list2', {
-		descending : false
-	}, callback);
-	*/
+	}, function(err, body) {
+		// ビュー結果を Hole, Count 順にソートする。
+		var list = body.rows;
+		list.sort(compareHoleCountAscending);
+		callback(list);
+	});
 };
 
 /**

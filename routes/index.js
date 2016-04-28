@@ -8,8 +8,19 @@
 // モジュールを読込む。
 var context = require('../utils/context');
 var score = require('../models/score');
+var moment = require('moment');
+moment.locale('ja');
 
-// ホールを取得する。
+/** 日付を取得する。 */
+var getDate = function(value) {
+	var date = value;
+	if (typeof date === 'undefined') {
+		date = moment().format('YYYY-MM-DD');
+	}
+	return date;
+};
+
+/** ホールを取得する。 */
 var getHole = function(value) {
 	var hole;
 	if (isNaN(value)) {
@@ -27,30 +38,10 @@ var getHole = function(value) {
 
 /** 地点情報一覧を表示する。 */
 exports.list = function(req, res) {
+	var date = getDate(req.query.date);
 	var hole = getHole(req.query.hole);
-	var date = typeof req.query.date === 'undefined' ? context.TODAY
-			: req.query.date;
 
-	score.list(date, function(err, body) {
-		// ビュー結果を Hole, Count 順にソートする。
-		var list = body.rows;
-		list.sort(function(a, b) {
-			if (a.value.hole < b.value.hole) {
-				return -1;
-			}
-			if (a.value.hole > b.value.hole) {
-				return 1;
-			}
-			if (a.value.count < b.value.count) {
-				return -1;
-			}
-			if (a.value.count > b.value.count) {
-				return 1;
-			}
-			return 0;
-		});
-
-		// 画面を表示する。
+	score.list(date, function(list) {
 		res.render('index', {
 			"hole" : hole,
 			"date" : date,
