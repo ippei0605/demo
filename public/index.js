@@ -1,21 +1,18 @@
-/* Score Counter アプリの地点情報一覧表示画面の JavaScript */
+/* Score Counter アプリの位置情報一覧画面の JavaScript */
 $(function() {
+	// 定数
+	var CANVAS = document.getElementById('map-canvas');
+	var MAP_OPTIONS = {
+		zoom : 17, // ズーム値
+		mapTypeId : google.maps.MapTypeId.SATELLITE
+	};
 
+	// グローバル変数
 	var map;
 	var centerLatlng;
 
 	function viewMap() {
-		// キャンパスの要素を取得する
-		var canvas = document.getElementById('map-canvas');
-
-		// 地図のオプションを設定する。
-		var mapOptions = {
-			zoom : 17, // ズーム値
-			mapTypeId : google.maps.MapTypeId.SATELLITE
-		};
-
-		// [canvas]に、[mapOptions]の内容の、地図のインスタンス([map])を作成する。
-		map = new google.maps.Map(canvas, mapOptions);
+		map = new google.maps.Map(CANVAS, MAP_OPTIONS);
 
 		var coordinates = [];
 
@@ -96,17 +93,17 @@ $(function() {
 
 	var pointList = [];
 
-	// 地点情報を表示する。
+	// 位置情報一覧を表示する。
 	function viewTable() {
 		pointList = [];
 		var count = 0;
-		// TeeShot 地点未記録
+		// TeeShot 未記録
 		setButton(false, true, true);
 
 		$('#tableId tbody tr').each(function() {
 			if ($('#holeId').val() === $(this).find('td:eq(0)').html()) {
 				if ($(this).find('td:eq(1)').html() === '0') {
-					// TeeShot 地点記録済み
+					// TeeShot 記録済み
 					setButton(true, false, false);
 				}
 				$(this).show();
@@ -148,7 +145,7 @@ $(function() {
 			$(location).attr('href', '/?date=' + date + '&hole=1');
 		});
 
-		// ティーショット (ホール最初の地点記録)
+		// ティーショット (ホール最初の位置情報記録)
 		$('#teeShotId').on('click', function() {
 			$('#clubId').val('');
 			recordPosition();
@@ -219,7 +216,7 @@ $(function() {
 			$('#detailHoleId').val($('#holeId').val());
 		});
 
-		// 地点情報を削除する。
+		// 位置情報を削除する。
 		$('#detailDeleteId').on('click', function() {
 			var form = $('#detailScoreFormId');
 			var action = $('#detailScoreFormId').attr('action');

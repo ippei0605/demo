@@ -36,7 +36,7 @@ var getHole = function(value) {
 	return hole;
 };
 
-/** 地点情報一覧を表示する。 */
+/** 位置情報一覧を表示する。 */
 exports.list = function(req, res) {
 	var date = getDate(req.query.date);
 	var hole = getHole(req.query.hole);
@@ -50,7 +50,7 @@ exports.list = function(req, res) {
 	});
 };
 
-/** 地点情報を登録する。 */
+/** 位置情報を登録する。 */
 exports.create = function(req, res) {
 	var date = req.body.date;
 	var hole = req.body.hole;
@@ -68,7 +68,7 @@ exports.create = function(req, res) {
 	});
 };
 
-/** 地点情報を更新する。 */
+/** 位置情報を更新する。 */
 exports.update = function(req, res) {
 	var date = req.body.date;
 	var hole = req.body.hole;
@@ -88,7 +88,7 @@ exports.update = function(req, res) {
 	});
 };
 
-/** 地点情報を削除する。 */
+/** 位置情報を削除する。 */
 exports.remove = function(req, res) {
 	var date = req.body.date;
 	var hole = req.body.hole;
