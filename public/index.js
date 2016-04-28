@@ -10,7 +10,9 @@ $(function() {
 	// グローバル変数
 	var map;
 	var centerLatlng;
+	var pointList = [];
 
+	// マップを表示する。
 	function viewMap() {
 		map = new google.maps.Map(CANVAS, MAP_OPTIONS);
 
@@ -56,6 +58,7 @@ $(function() {
 		});
 	}
 
+	// 位置情報を記録する。
 	function recordPosition() {
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(doSuccess, doError);
@@ -91,8 +94,6 @@ $(function() {
 		$('#detailDeleteId').prop('disabled', true);
 	}
 
-	var pointList = [];
-
 	// 位置情報一覧を表示する。
 	function viewTable() {
 		pointList = [];
@@ -126,6 +127,7 @@ $(function() {
 		}
 	}
 
+	// 位置情報一覧とマップを表示する。
 	function view() {
 		viewTable();
 		if (pointList.length > 0) {
