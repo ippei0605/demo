@@ -3,75 +3,102 @@ $(function() {
 	// 定数
 	var CANVAS = document.getElementById('map-canvas');
 	var MAP_OPTIONS = {
-		zoom : 17, // ズーム値
+		zoom : 17,
 		mapTypeId : google.maps.MapTypeId.SATELLITE
 	};
+	var DEFAULT_LAT_LNG = new google.maps.LatLng(35.678371, 139.7873187); // HZ
 
 	// グローバル変数
 	var map;
-	var centerLatlng;
+	var centerLatlng = DEFAULT_LAT_LNG;
 	var pointList = [];
+
+	// 文字列 (カンマ区切り) より位置情報を取得する。
+	function getLatLng(keyword) {
+		var temp = keyword.split(',');
+		return new google.maps.LatLng(temp[0], temp[1]);
+	}
+
+	// 中心の位置座標をセットする。
+	function setCenterLatlng(latLngList) {
+		var length = latLngList.length;
+		switch (length) {
+		case 0:
+			setCenterLatlngOfCurrentPosition();
+			break;
+		case 1:
+			centerLatlng = new google.maps.LatLng(latLngList[0].lat(), latLngList[0]
+					.lng());
+			break;
+		default:
+			centerLatlng = new google.maps.LatLng(
+					(latLngList[0].lat() + latLngList[length - 1].lat()) / 2,
+					(latLngList[0].lng() + latLngList[length - 1].lng()) / 2);
+			break;
+		}
+	}
 
 	// マップを表示する。
 	function viewMap() {
 		map = new google.maps.Map(CANVAS, MAP_OPTIONS);
 
-		var coordinates = [];
-
+		var latLngList = [];
 		for (var i = 0; i < pointList.length; i++) {
-			var target = pointList[i].split(',');
-			var latLng = new google.maps.LatLng(target[0], target[1]);
-			coordinates[i] = latLng;
+			latLngList[i] = getLatLng(pointList[i]);
 
 			// 距離を計算する。
 			var distance, distanceDisp = '';
 			if (i > 0) {
 				distance = google.maps.geometry.spherical.computeDistanceBetween(
-						coordinates[i - 1], coordinates[i]) * 1.09361;
+						latLngList[i - 1], latLngList[i]) * 1.09361;
 				distanceDisp = Math.ceil(distance) + 'yd';
 			}
+			// マーカーをセットする。
 			new google.maps.Marker({
 				map : map,
-				position : latLng,
+				position : latLngList[i],
 				title : '[' + String(i) + ']' + distanceDisp
 			});
 		}
 
 		// 中心の位置座標をセットする。
-		var teeLat = coordinates[0].lat();
-		var teeLng = coordinates[0].lng();
-		var cupLat = coordinates[pointList.length - 1].lat();
-		var cupLng = coordinates[pointList.length - 1].lng();
-		var centerLat = (teeLat + cupLat) / 2;
-		var centerLng = (teeLng + cupLng) / 2;
-		centerLatlng = new google.maps.LatLng(centerLat, centerLng);
+		setCenterLatlng(latLngList);
 		map.setCenter(centerLatlng);
 
 		// 線を引く。
 		new google.maps.Polyline({
 			map : map,
-			path : coordinates, // 座標配列
-			strokeColor : '#FF0000', // 色（#RRGGBB形式）
-			strokeOpacity : 1.0, // 透明度 0.0～1.0（デフォルト）
+			path : latLngList,
+			strokeColor : '#FF0000',
+			strokeOpacity : 1.0,
 			strokeWeight : 2
-		// 太さ（単位ピクセル）
 		});
 	}
 
-	// 位置情報を記録する。
-	function recordPosition() {
+	// Geolocation により現在位置を取得して、コールバックする。
+	function getCurrentPosition(callbackOk, callbackNg) {
 		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(doSuccess, doError);
+			navigator.geolocation.getCurrentPosition(callbackOk, callbackNg);
 		} else {
 			window.alert("このブラウザではGeolocationが使えません");
 		}
 	}
 
-	// 位置情報の取得に成功した場合
-	function doSuccess(pos) {
-		$('#latitudeId').val(pos.coords.latitude);
-		$('#longitudeId').val(pos.coords.longitude);
-		$('#scoreFormId').submit();
+	// 現在位置を中心の位置座標にセットする。
+	function setCenterLatlngOfCurrentPosition() {
+		getCurrentPosition(function(pos) {
+			centerLatlng = new google.maps.LatLng(pos.coords.latitude,
+					pos.coords.longitude);
+		}, doError);
+	}
+
+	// 位置情報を記録する。
+	function recordPosition() {
+		getCurrentPosition(function(pos) {
+			$('#latitudeId').val(pos.coords.latitude);
+			$('#longitudeId').val(pos.coords.longitude);
+			$('#scoreFormId').submit();
+		}, doError);
 	}
 
 	// 位置情報の取得に失敗した場合
@@ -130,18 +157,18 @@ $(function() {
 	// 位置情報一覧とマップを表示する。
 	function view() {
 		viewTable();
-		if (pointList.length > 0) {
-			viewMap();
-		}
+		viewMap();
 	}
 
 	$(document).ready(function() {
 		view();
 
-		// ホールが変わったら再表示する。
+		// Hole が変わったら再表示する。
 		$('#holeId').change(function() {
 			view();
 		});
+
+		// Date が変わったらサーバに地点情報一覧を要求する。
 		$('#dateId').change(function() {
 			var date = $('#dateId').val();
 			$(location).attr('href', '/?date=' + date + '&hole=1');
