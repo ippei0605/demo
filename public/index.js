@@ -171,7 +171,8 @@ $(function() {
 		// Date が変わったらサーバに地点情報一覧を要求する。
 		$('#dateId').change(function() {
 			var date = $('#dateId').val();
-			$(location).attr('href', '/?date=' + date + '&hole=1');
+			var hole = $('#holeId').val();
+			$(location).attr('href', '/?date=' + date + '&hole=' + hole);
 		});
 
 		// ティーショット (ホール最初の位置情報記録)
