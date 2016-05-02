@@ -5,6 +5,7 @@ node_modules/
 out/
 
 # 設定ファイル
+.idea/
 .settings/
 .project
 .sublime-project
