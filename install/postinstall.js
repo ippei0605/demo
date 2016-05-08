@@ -12,27 +12,22 @@
 // モジュールを読込む。
 var context = require('../utils/context');
 
-// 設計文書 (ファンクションは空で定義)
+// 設計文書
 var DESIGN_DOCUMENT = {
 	"_id" : "_design/scores",
 	"views" : {
 		"list" : {
-			"map" : ""
+			"map" : "function(doc) {\n\tvar row = {\n\t\t\"_id\" : doc._id,\n\t\t\"_rev\" : doc._rev,\n\t\t\"date\" : doc.date,\n\t\t\"hole\" : doc.hole,\n\t\t\"count\" : doc.count,\n\t\t\"club\" : doc.club,\n\t\t\"result\" : doc.result,\n\t\t\"latitude\" : doc.latitude,\n\t\t\"longitude\" : doc.longitude\n\t};\n\temit(doc.date, row);\n}"
+		},
+		"total" : {
+			"map" : "function(doc) {\r\n  var put = 0;\r\n  if(doc.result === 'Green'){\r\n    put = 1;\r\n  }\r\n\temit({\r\n\t\t\"date\": doc.date,\r\n\t\t\"hole\": doc.hole\r\n\t}, {\r\n    \"count\": 1,\r\n    \"put\": put\r\n  });\r\n}",
+			"reduce" : "_sum"
 		}
 	}
 };
 
-// 関数を読込む。
-var readFunction = function(fs, fileName) {
-	return fs.readFileSync(__dirname + '/' + fileName + '.function').toString();
-};
-
 // 関数を読込み設計文書を作成する。
 var insertDesignDocument = function(db, doc) {
-	// プロパティに関数をセットする。
-	var fs = require("fs");
-	doc.views.list.map = readFunction(fs, 'list');
-
 	db.insert(doc, function(err) {
 		if (!err) {
 			console.log('設計文書[%s]を作成しました。', doc._id);
