@@ -4,7 +4,8 @@
 
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <title>Score Counter</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
@@ -114,6 +115,7 @@
 				<ul class="nav nav-tabs">
 					<li class="active"><a href="#scoreTabId" data-toggle="tab">Score</a></li>
 					<li><a href="#layoutTabId" data-toggle="tab">Layout</a></li>
+					<li><a href="#totalTabId" data-toggle="tab">Total</a></li>
 				</ul>
 				</br>
 				<div id="tabId" class="tab-content">
@@ -161,6 +163,103 @@
 							<div id="map-canvas">Course Layout</div>
 						</div>
 					</div>
+
+					<div class="tab-pane" id="totalTabId">
+						<div class="table-responsive">
+							<table class="table table-hover" id="totalTableId">
+								<tbody id="totalRowId">
+									<tr>
+										<th>OUT</th>
+										<th>1</th>
+										<th>2</th>
+										<th>3</th>
+										<th>4</th>
+										<th>5</th>
+										<th>6</th>
+										<th>7</th>
+										<th>8</th>
+										<th>9</th>
+										<th>Half</th>
+										<th></th>
+									</tr>
+									<tr>
+										<th>Score</th>
+										<td id="C01Id"></td>
+										<td id="C02Id"></td>
+										<td id="C03Id"></td>
+										<td id="C04Id"></td>
+										<td id="C05Id"></td>
+										<td id="C06Id"></td>
+										<td id="C07Id"></td>
+										<td id="C08Id"></td>
+										<td id="C09Id"></td>
+										<td id="C01-09Id"></td>
+										<td></td>
+									</tr>
+									<tr>
+										<th>Put</th>
+										<td id="P01Id"></td>
+										<td id="P02Id"></td>
+										<td id="P03Id"></td>
+										<td id="P04Id"></td>
+										<td id="P05Id"></td>
+										<td id="P06Id"></td>
+										<td id="P07Id"></td>
+										<td id="P08Id"></td>
+										<td id="P09Id"></td>
+										<td id="P01-09Id"></td>
+										<td></td>
+									</tr>
+									<tr>
+										<td colspan="12"></td>
+									</tr>
+									<tr>
+										<th>IN</th>
+										<th>10</th>
+										<th>11</th>
+										<th>12</th>
+										<th>13</th>
+										<th>14</th>
+										<th>15</th>
+										<th>16</th>
+										<th>17</th>
+										<th>18</th>
+										<th>Half</th>
+										<th>Total</th>
+									</tr>
+									<tr>
+										<th>Score</th>
+										<td id="C10Id"></td>
+										<td id="C11Id"></td>
+										<td id="C12Id"></td>
+										<td id="C13Id"></td>
+										<td id="C14Id"></td>
+										<td id="C15Id"></td>
+										<td id="C16Id"></td>
+										<td id="C17Id"></td>
+										<td id="C18Id"></td>
+										<td id="C10-18Id"></td>
+										<td id="C01-18Id"></td>
+									</tr>
+									<tr>
+										<th>Put</th>
+										<td id="P10Id"></td>
+										<td id="P11Id"></td>
+										<td id="P12Id"></td>
+										<td id="P13Id"></td>
+										<td id="P14Id"></td>
+										<td id="P15Id"></td>
+										<td id="P16Id"></td>
+										<td id="P17Id"></td>
+										<td id="P18Id"></td>
+										<td id="P10-18Id"></td>
+										<td id="P01-18Id"></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
 				</div>
 			</div>
 		</div>

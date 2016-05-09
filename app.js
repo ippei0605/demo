@@ -30,6 +30,8 @@ app.get('/', routes.list);
 app.post('/scores', routes.create);
 app.post('/scores/:_id/:_rev', routes.update);
 app.post('/scores/:_id/:_rev/delete', routes.remove);
+app.get('/total', routes.total);
+
 
 // リクエストを受付ける。
 app.listen(context.appEnv.port, function() {

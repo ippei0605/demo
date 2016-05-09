@@ -66,3 +66,31 @@ exports.save = function(doc, callback) {
 exports.remove = function(_id, _rev, callback) {
 	db.destroy(_id, _rev, callback);
 };
+
+/**
+ * スコアを集計する。
+ *
+ * @see db.view 関数
+ *      {@link https://github.com/apache/couchdb-nano#dbviewdesignname-viewname-params-callback}
+ */
+exports.total = function(date, callback) {
+	db.view('scores', 'total', {
+		descending : false,
+		group : true
+	}, function(err, body) {
+		var initValue = {
+			"count" : 0,
+			"put" : 0
+		};
+		var value = [ initValue, initValue, initValue, initValue, initValue,
+				initValue, initValue, initValue, initValue, initValue, initValue,
+				initValue, initValue, initValue, initValue, initValue, initValue,
+				initValue, initValue ];
+		body.rows.forEach(function(row) {
+			if (row.key[0] === date) {
+				value[parseInt(row.key[1])] = row.value;
+			}
+		});
+		callback(value);
+	});
+};

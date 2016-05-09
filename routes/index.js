@@ -96,3 +96,11 @@ exports.remove = function(req, res) {
 		res.redirect('/?date=' + date + '&hole=' + hole);
 	});
 };
+
+/** スコアを集計して JSON で返す。 */
+exports.total = function(req, res) {
+	var date = getDate(req.query.date);
+	score.total(date, function(value) {
+		res.send(value);
+	});
+};

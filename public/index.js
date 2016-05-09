@@ -158,6 +158,41 @@ $(function() {
 	function view() {
 		viewTable();
 		viewMap();
+		viewTotal();
+	}
+
+	// TD ID を返す。 type = C: Count, P: Put
+	function getTdId(type, hole) {
+		return '#' + type + ('0' + hole).slice(-2) + 'Id';
+	}
+
+	// ハーフスコアを集計する。
+	function sumHalfScore(hole, holeScore, halfScore) {
+		var count = holeScore.count;
+		var put = holeScore.put;
+		$(getTdId('C', hole)).text(count);
+		$(getTdId('P', hole)).text(put);
+		halfScore[0] += count;
+		halfScore[1] += put;
+		return halfScore;
+	}
+
+	// スコアを集計する。
+	function viewTotal() {
+		var date = $('#dateId').val();
+		$.getJSON('total?date=' + date, function(list) {
+			var outScore = [ 0, 0 ], inScore = [ 0, 0 ];
+			for (var i = 1; i <= 9; i++) {
+				outScore = sumHalfScore(i, list[i], outScore);
+				inScore = sumHalfScore(i + 9, list[i + 9], inScore);
+			}
+			$('#C01-09Id').text(outScore[0]);
+			$('#P01-09Id').text(outScore[1]);
+			$('#C10-18Id').text(inScore[0]);
+			$('#P10-18Id').text(inScore[1]);
+			$('#C01-18Id').text(outScore[0] + inScore[0]);
+			$('#P01-18Id').text(outScore[1] + inScore[1]);
+		});
 	}
 
 	$(document).ready(function() {
