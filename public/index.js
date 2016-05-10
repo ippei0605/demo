@@ -160,7 +160,6 @@ $(function() {
 	function view() {
 		viewTable();
 		viewMap();
-		viewTotal();
 	}
 
 	// TD ID を返す。 type = C: Count, P: Put
@@ -199,6 +198,7 @@ $(function() {
 
 	$(document).ready(function() {
 		view();
+		viewTotal();
 
 		// Hole が変わったら再表示する。
 		$('#holeId').change(function() {
