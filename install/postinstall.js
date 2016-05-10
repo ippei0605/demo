@@ -20,7 +20,7 @@ var DESIGN_DOCUMENT = {
 			"map" : "function(doc) {\n\tvar row = {\n\t\t\"_id\" : doc._id,\n\t\t\"_rev\" : doc._rev,\n\t\t\"date\" : doc.date,\n\t\t\"hole\" : doc.hole,\n\t\t\"count\" : doc.count,\n\t\t\"club\" : doc.club,\n\t\t\"result\" : doc.result,\n\t\t\"latitude\" : doc.latitude,\n\t\t\"longitude\" : doc.longitude\n\t};\n\temit(doc.date, row);\n}"
 		},
 		"total" : {
-			"map" : "function(doc) {\r\n  var put = 0;\r\n  if(doc.result === 'Green'){\r\n    put = 1;\r\n  }\r\n\temit({\r\n\t\t\"date\": doc.date,\r\n\t\t\"hole\": doc.hole\r\n\t}, {\r\n    \"count\": 1,\r\n    \"put\": put\r\n  });\r\n}",
+			"map" : "function(doc) {\r\n  if(doc.count !== '0') {\r\n    var put = 0;\r\n    if(doc.result === 'Green') {\r\n      put = 1;\r\n    }\r\n  \temit([doc.date, doc.hole], {\r\n      \"count\": 1,\r\n      \"put\": put\r\n    });\r\n  }\r\n}",
 			"reduce" : "_sum"
 		}
 	}
