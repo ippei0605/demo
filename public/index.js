@@ -13,10 +13,9 @@ $(function() {
 	var centerLatlng = DEFAULT_LAT_LNG;
 	var pointList = [];
 
-	// 文字列 (カンマ区切り) より位置情報を取得する。
-	function getLatLng(keyword) {
-		var temp = keyword.split(',');
-		return new google.maps.LatLng(temp[0], temp[1]);
+	// 位置情報を取得する。
+	function getLatLng(point) {
+		return new google.maps.LatLng(point.lat, point.lng);
 	}
 
 	// 中心の位置座標をセットする。
@@ -135,7 +134,10 @@ $(function() {
 					setButton(true, false, false);
 				}
 				$(this).show();
-				pointList.push($(this).find('td:eq(5)').html());
+				pointList.push({
+					"lat" : $(this).find('td:eq(5)').html(),
+					"lng" : $(this).find('td:eq(6)').html()
+				});
 				count++;
 			} else {
 				$(this).hide();
