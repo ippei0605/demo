@@ -40,10 +40,14 @@ exports.list = function(date, callback) {
 		descending : false,
 		key : date
 	}, function(err, body) {
-		// ビュー結果を Hole, Count 順にソートする。
-		var list = body.rows;
-		list.sort(compareHoleCountAscending);
-		callback(list);
+		if (err) {
+			console.log(err.message);
+		} else {
+			// ビュー結果を Hole, Count 順にソートする。
+			var list = body.rows;
+			list.sort(compareHoleCountAscending);
+			callback(list);
+		}
 	});
 };
 
@@ -78,19 +82,23 @@ exports.total = function(date, callback) {
 		descending : false,
 		group : true
 	}, function(err, body) {
-		var initValue = {
-			"count" : 0,
-			"put" : 0
-		};
-		var value = [ initValue, initValue, initValue, initValue, initValue,
-				initValue, initValue, initValue, initValue, initValue, initValue,
-				initValue, initValue, initValue, initValue, initValue, initValue,
-				initValue, initValue ];
-		body.rows.forEach(function(row) {
-			if (row.key[0] === date) {
-				value[parseInt(row.key[1])] = row.value;
-			}
-		});
-		callback(value);
+		if (err) {
+			console.log(err.message);
+		} else {
+			var initValue = {
+				"count" : 0,
+				"put" : 0
+			};
+			var value = [ initValue, initValue, initValue, initValue, initValue,
+					initValue, initValue, initValue, initValue, initValue, initValue,
+					initValue, initValue, initValue, initValue, initValue, initValue,
+					initValue, initValue ];
+			body.rows.forEach(function(row) {
+				if (row.key[0] === date) {
+					value[parseInt(row.key[1])] = row.value;
+				}
+			});
+			callback(value);
+		}
 	});
 };
