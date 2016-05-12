@@ -1,7 +1,7 @@
 # Score Counter
 
 ## はじめに
-このアプリケーションは、IBM Bluemix、Node.js、Cloudant NoSQL DB で次を検証するために開発しました。
+このアプリケーションはゴルフのスコアカウンターです。IBM Bluemix、Node.js、Cloudant NoSQL DB で次を検証するために開発しました。
 * 位置情報の登録
 * MapReduce による集計
 * dashDB とのデータ連携 (Warehousing)
@@ -93,14 +93,49 @@
 
 
 ## まとめ
-#### 位置情報の登録
-* MapReduce による集計
-* dashDB とのデータ連携 (Warehousing)
+### 位置情報の登録
+クライアント JavaScript で　Geolocation により現在位置 (緯度、経度) を取得しています。サーバに POST して Cloudant に登録することができました。  
+位置情報の一覧表示において、サーバから取得した位置情報は、クライアント JavaScript でGoogle マップと連携、地図上に地点、線分、地点間の距離 (Stroke 1 以降の地点をマウスでポイント) を表示することができました。
+
+###  MapReduce による集計
+次の view によってスコアを集計をしています。(Total タブ)
+
+    score/_design/scores/_view/total?group=true
+
+Reduce は Map 結果だけでなく、Reduce 結果も入力されます。 (rereduce パラメータ) 従って、Reduce では複雑なことはぜず、Map 結果を単純に集計することが望ましいと思います。
+MapReduce と結果を以下に示します。 
+
+#### Map
+    function(doc) {
+      if(doc.count !== '0') {
+        var put = 0;
+        if(doc.result === 'Green') {
+          put = 1;
+        }
+        emit([doc.date, doc.hole], {
+          "count": 1,
+          "put": put
+        });
+      }
+    }
+
+#### Reduce
+    _sum
+
+#### 結果  
+    {"rows":[
+    {"key":["2016-04-02","1"],"value":{"count":4,"put":2}},
+    {"key":["2016-04-02","10"],"value":{"count":6,"put":3}},
+    {"key":["2016-04-02","11"],"value":{"count":5,"put":3}},
+    ... (省略) ...,
+    ]}
 
 
-Cloudant NoSQL DB のインデックス機能により、複数項目のテキスト検索が簡単に実装できることが分かりました。  
-Node.js において、Cloudant のドキュメント操作は非同期処理のため、リストで取得したドキュメントを、ループ処理で個別操作して、結果セットを画面  (EJS) に渡すことは難しいです。非同期処理の結果を待つ仕組みが必要だからです。また、SQLのようにサブクエリを実行することもできません。インデックスとビュー (マップファンクション) を組合わせて記述することが Node.js では効率的だと思いました。データ構造や画面レイアウトがより複雑な場合は、当たり前のことですがインデックスとビューの設計が鍵となります。  
-些細なことですが、Java Script の予約語は、要素や関数に利用されていることがあり、その場合は工夫が必要だと思いました。 (Express の delete関数、今回のインデックスの default など)
+### dashDB とのデータ連携 (Warehousing)
+Cloudant NoSQL DB の Warehousing 機能で dashDB にデータ連携することを確認しました。  
+* Warehousing 設定時点で、Cloudant のデータ項目を全て展開した形式で dashDB に登録されます。同期タイミングはほぼリアルタイムで、条件を指定することはできません。
+* Warehousing 設定時点に無かったデータ項目をCloudant に保存すると、エラー (スキップ) としてdashDB 上のオーバーフローテーブルにIDが書き出されます。
+
 
 ## リンク
 * Cloudant Node.js client library  
