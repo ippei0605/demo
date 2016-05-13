@@ -87,7 +87,7 @@ exports.total = function(date, callback) {
 		} else {
 			var initValue = {
 				"count" : 0,
-				"put" : 0
+				"putt" : 0
 			};
 			var value = [ initValue, initValue, initValue, initValue, initValue,
 					initValue, initValue, initValue, initValue, initValue, initValue,

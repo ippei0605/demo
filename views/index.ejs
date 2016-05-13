@@ -35,20 +35,30 @@
 		<form id="scoreFormId" name="scoreForm" method="post" action="/scores">
 
 			<div class="row">
-				<div class="col-xs-1 text-right">
-					<p>Date</p>
-				</div>
-				<div class="col-xs-5 text-right">
+				<div class="col-xs-6">Date</div>
+				<div class="col-xs-6">Hole</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-6">
 					<input type="date" class="form-control" id="dateId" name="date"
 						value="<%= date %>">
 					</p>
 				</div>
-				<div class="col-xs-1 text-right">
-					<p>Hole</p>
+
+				<div class="col-xs-1">
+					<span id="holeSpinDownId"
+						class="glyphicon glyphicon-chevron-left hole-spin"></span>
 				</div>
-				<div class="col-xs-5 text-right">
+
+				<div class="col-xs-3">
 					<input type="number" class="form-control" id="holeId" name="hole"
 						min="1" max="18" value="<%= hole %>">
+				</div>
+
+				<div class="col-xs-2">
+					<span id="holeSpinUpId"
+						class="glyphicon glyphicon-chevron-right hole-spin"></span>
 				</div>
 			</div>
 
@@ -198,7 +208,7 @@
 									<td></td>
 								</tr>
 								<tr>
-									<td>Put</td>
+									<td>Putt</td>
 									<td id="P01Id"></td>
 									<td id="P02Id"></td>
 									<td id="P03Id"></td>
@@ -223,8 +233,7 @@
 									<th>17</th>
 									<th>18</th>
 									<th>Half</th>
-									<th>Total
-									</th>
+									<th>Total</th>
 								</tr>
 								<tr>
 									<td>Score</td>
@@ -241,7 +250,7 @@
 									<td id="C01-18Id"></td>
 								</tr>
 								<tr>
-									<td>Put</td>
+									<td>Putt</td>
 									<td id="P10Id"></td>
 									<td id="P11Id"></td>
 									<td id="P12Id"></td>

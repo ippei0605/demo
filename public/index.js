@@ -162,7 +162,7 @@ $(function() {
 		viewMap();
 	}
 
-	// TD ID を返す。 type = C: Count, P: Put
+	// TD ID を返す。 type = C: Count, P: Putt
 	function getTdId(type, hole) {
 		return '#' + type + ('0' + hole).slice(-2) + 'Id';
 	}
@@ -170,11 +170,11 @@ $(function() {
 	// ハーフスコアを集計する。
 	function sumHalfScore(hole, holeScore, halfScore) {
 		var count = holeScore.count;
-		var put = holeScore.put;
+		var putt = holeScore.put;
 		$(getTdId('C', hole)).text(count);
-		$(getTdId('P', hole)).text(put);
+		$(getTdId('P', hole)).text(putt);
 		halfScore[0] += count;
-		halfScore[1] += put;
+		halfScore[1] += putt;
 		return halfScore;
 	}
 
@@ -196,9 +196,30 @@ $(function() {
 		});
 	}
 
+	function spinHole(step) {
+		var hole = parseInt($('#holeId').val()) + step;
+		if (hole > 18) {
+			hole = 1;
+		} else if (hole < 1) {
+			hole = 18;
+		}
+		$('#holeId').val(hole);
+		view();
+	}
+
 	$(document).ready(function() {
 		view();
 		viewTotal();
+
+		// ホールのスピンダウンボタンにより下げる。
+		$('#holeSpinDownId').on('click', function() {
+			spinHole(-1);
+		});
+
+		// ホールのスピンアップボタンにより上げる。
+		$('#holeSpinUpId').on('click', function() {
+			spinHole(1);
+		});
 
 		// Hole が変わったら再表示する。
 		$('#holeId').change(function() {
@@ -217,6 +238,7 @@ $(function() {
 			$('#clubId').val('');
 			recordPosition();
 		});
+
 		// ストローク追加 (1打罰など)
 		$('#addStrokeId').on('click', function() {
 			$('#clubId').val('');
