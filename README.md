@@ -54,7 +54,7 @@
 
 
 ## ファイル構成
-    score-counterscore-counter-ippei
+    score-counter
     │  .cfignore
     │  .gitignore
     │  app.js                    Score Counter アプリ
@@ -78,8 +78,8 @@
     ├─utils
     │      context.js            Score Counter アプリのコンテキスト
     │      
-    └─views
-            index.ejs             Score Counter アプリの位置情報一覧画面、更新ダイアログ
+    └─views  
+           index.ejs             Score Counter アプリの位置情報一覧画面、更新ダイアログ  
 
 
 ## ルート (URLマッピング)
