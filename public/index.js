@@ -170,7 +170,7 @@ $(function() {
 	// ハーフスコアを集計する。
 	function sumHalfScore(hole, holeScore, halfScore) {
 		var count = holeScore.count;
-		var putt = holeScore.put;
+		var putt = holeScore.putt;
 		$(getTdId('C', hole)).text(count);
 		$(getTdId('P', hole)).text(putt);
 		halfScore[0] += count;

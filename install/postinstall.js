@@ -987,9 +987,6 @@ var createDatabese = function(database, doc) {
 					insertDesignDocument(db, doc);
 				}
 			});
-
-			// サンプルデータをロードする。
-			insertDocument(db, SAMPLE_DATA);
 		}
 	});
 };
