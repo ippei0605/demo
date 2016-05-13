@@ -130,6 +130,7 @@ MapReduce と結果を以下に示します。
     ... (省略) ...,
     ]}
 
+取得した結果は画面表示しやすいように、 models/score.js # total 関数で配列に詰め替えて使用しています。
 
 ### dashDB とのデータ連携 (Warehousing)
 Cloudant NoSQL DB の Warehousing 機能で dashDB にデータ連携することを確認しました。  
