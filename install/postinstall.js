@@ -29,7 +29,7 @@ var DESIGN_DOCUMENT = {
 // サンプルデータ (113件)
 var SAMPLE_DATA = [ {
 	"date" : "2016-04-02",
-	"hole" : "8",
+	"hole" : 8,
 	"count" : "3",
 	"club" : "7I",
 	"result" : "Fairway",
@@ -37,7 +37,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.921484"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "8",
+	"hole" : 8,
 	"count" : "4",
 	"club" : "PW",
 	"result" : "Bunker",
@@ -45,7 +45,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.921409"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "9",
+	"hole" : 9,
 	"count" : "0",
 	"club" : "",
 	"result" : "",
@@ -53,7 +53,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.921829"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "4",
+	"hole" : 4,
 	"count" : "1",
 	"club" : "3W",
 	"result" : "Fairway",
@@ -61,7 +61,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.924036"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "9",
+	"hole" : 9,
 	"count" : "5",
 	"club" : "Putter",
 	"result" : "Green",
@@ -69,7 +69,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.925232"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "6",
+	"hole" : 6,
 	"count" : "3",
 	"club" : "8I",
 	"result" : "Green",
@@ -77,7 +77,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.926313"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "6",
+	"hole" : 6,
 	"count" : "5",
 	"club" : "Putter",
 	"result" : "Cup in",
@@ -85,7 +85,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.926388"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "7",
+	"hole" : 7,
 	"count" : "0",
 	"club" : "",
 	"result" : "",
@@ -93,7 +93,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.926231"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "7",
+	"hole" : 7,
 	"count" : "1",
 	"club" : "3W",
 	"result" : "Rough",
@@ -101,7 +101,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.924269"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "7",
+	"hole" : 7,
 	"count" : "2",
 	"club" : "9I",
 	"result" : "Rough",
@@ -109,7 +109,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.922931"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "7",
+	"hole" : 7,
 	"count" : "4",
 	"club" : "Putter",
 	"result" : "Green",
@@ -117,7 +117,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.922921"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "3",
+	"hole" : 3,
 	"count" : "1",
 	"club" : "Driver",
 	"result" : "Rough",
@@ -125,7 +125,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.925230"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "1",
+	"hole" : 1,
 	"count" : "3",
 	"club" : "AW",
 	"result" : "Green",
@@ -133,7 +133,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.921352"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "2",
+	"hole" : 2,
 	"count" : "1",
 	"club" : "9I",
 	"result" : "Fairway",
@@ -141,7 +141,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.921710"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "1",
+	"hole" : 1,
 	"count" : "4",
 	"club" : "Putter",
 	"result" : "Cup in",
@@ -149,7 +149,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.921229"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "18",
+	"hole" : 18,
 	"count" : "2",
 	"club" : "6I",
 	"result" : "Rough",
@@ -157,7 +157,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.926132"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "16",
+	"hole" : 16,
 	"count" : "0",
 	"club" : "",
 	"result" : "",
@@ -165,7 +165,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.930285"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "16",
+	"hole" : 16,
 	"count" : "2",
 	"club" : "PW",
 	"result" : "Fairway",
@@ -173,7 +173,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.931432"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "16",
+	"hole" : 16,
 	"count" : "5",
 	"club" : "Putter",
 	"result" : "Cup in",
@@ -181,7 +181,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.931370"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "17",
+	"hole" : 17,
 	"count" : "0",
 	"club" : "",
 	"result" : "",
@@ -189,7 +189,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.930626"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "10",
+	"hole" : 10,
 	"count" : "6",
 	"club" : "Putter",
 	"result" : "Cup in",
@@ -197,7 +197,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.927304"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "2",
+	"hole" : 2,
 	"count" : "3",
 	"club" : "Putter",
 	"result" : "Green",
@@ -205,7 +205,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.921941"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "17",
+	"hole" : 17,
 	"count" : "4",
 	"club" : "AW",
 	"result" : "Fairway",
@@ -213,7 +213,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.926503"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "2",
+	"hole" : 2,
 	"count" : "2",
 	"club" : "9I",
 	"result" : "Green",
@@ -221,7 +221,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.921894"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "7",
+	"hole" : 7,
 	"count" : "3",
 	"club" : "AW",
 	"result" : "Green",
@@ -229,7 +229,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.922944"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "7",
+	"hole" : 7,
 	"count" : "5",
 	"club" : "Putter",
 	"result" : "Green",
@@ -237,7 +237,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.922924"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "12",
+	"hole" : 12,
 	"count" : "4",
 	"club" : "Putter",
 	"result" : "Cup in",
@@ -245,7 +245,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.928974"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "1",
+	"hole" : 1,
 	"count" : "0",
 	"club" : "",
 	"result" : "",
@@ -253,7 +253,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.925547"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "1",
+	"hole" : 1,
 	"count" : "1",
 	"club" : "3W",
 	"result" : "Fairway",
@@ -261,7 +261,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.923589"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "13",
+	"hole" : 13,
 	"count" : "2",
 	"club" : "8I",
 	"result" : "Rough",
@@ -269,7 +269,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.929279"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "13",
+	"hole" : 13,
 	"count" : "4",
 	"club" : "Putter",
 	"result" : "Green",
@@ -277,7 +277,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.929460"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "18",
+	"hole" : 18,
 	"count" : "1",
 	"club" : "Driver",
 	"result" : "Rough",
@@ -285,7 +285,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.925918"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "10",
+	"hole" : 10,
 	"count" : "4",
 	"club" : "Putter",
 	"result" : "Green",
@@ -293,7 +293,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.927281"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "18",
+	"hole" : 18,
 	"count" : "3",
 	"club" : "SW",
 	"result" : "Green",
@@ -301,7 +301,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.926491"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "16",
+	"hole" : 16,
 	"count" : "4",
 	"club" : "Putter",
 	"result" : "Green",
@@ -309,7 +309,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.931370"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "17",
+	"hole" : 17,
 	"count" : "1",
 	"club" : "Driver",
 	"result" : "Rough",
@@ -317,7 +317,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.928207"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "17",
+	"hole" : 17,
 	"count" : "2",
 	"club" : "7I",
 	"result" : "Rough",
@@ -325,7 +325,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.928097"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "17",
+	"hole" : 17,
 	"count" : "5",
 	"club" : "9I",
 	"result" : "Green",
@@ -333,7 +333,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.926438"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "17",
+	"hole" : 17,
 	"count" : "7",
 	"club" : "Putter",
 	"result" : "Green",
@@ -341,7 +341,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.926355"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "9",
+	"hole" : 9,
 	"count" : "6",
 	"club" : "Putter",
 	"result" : "Cup in",
@@ -349,7 +349,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.925234"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "18",
+	"hole" : 18,
 	"count" : "5",
 	"club" : "Putter",
 	"result" : "Cup in",
@@ -357,7 +357,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.926498"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "8",
+	"hole" : 8,
 	"count" : "6",
 	"club" : "9I",
 	"result" : "Green",
@@ -365,7 +365,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.921087"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "8",
+	"hole" : 8,
 	"count" : "7",
 	"club" : "Putter",
 	"result" : "Green",
@@ -373,7 +373,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.921192"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "18",
+	"hole" : 18,
 	"count" : "0",
 	"club" : "",
 	"result" : "",
@@ -381,7 +381,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.926733"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "8",
+	"hole" : 8,
 	"count" : "1",
 	"club" : "Driver",
 	"result" : "Rough",
@@ -389,7 +389,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.921945"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "8",
+	"hole" : 8,
 	"count" : "5",
 	"club" : "SW",
 	"result" : "Rough",
@@ -397,7 +397,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.920901"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "15",
+	"hole" : 15,
 	"count" : "1",
 	"club" : "8I",
 	"result" : "Green",
@@ -405,7 +405,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.930072"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "2",
+	"hole" : 2,
 	"count" : "0",
 	"club" : "",
 	"result" : "",
@@ -413,7 +413,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.921039"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "4",
+	"hole" : 4,
 	"count" : "3",
 	"club" : "AW",
 	"result" : "Fairway",
@@ -421,7 +421,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.922575"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "5",
+	"hole" : 5,
 	"count" : "1",
 	"club" : "6I",
 	"result" : "Rough",
@@ -429,7 +429,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.923080"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "15",
+	"hole" : 15,
 	"count" : "0",
 	"club" : "",
 	"result" : "",
@@ -437,7 +437,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.930029"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "11",
+	"hole" : 11,
 	"count" : "4",
 	"club" : "Putter",
 	"result" : "Green",
@@ -445,7 +445,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.927432"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "11",
+	"hole" : 11,
 	"count" : "5",
 	"club" : "Putter",
 	"result" : "Cup in",
@@ -453,7 +453,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.927432"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "15",
+	"hole" : 15,
 	"count" : "2",
 	"club" : "Putter",
 	"result" : "Green",
@@ -461,7 +461,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.930061"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "15",
+	"hole" : 15,
 	"count" : "3",
 	"club" : "Putter",
 	"result" : "Cup in",
@@ -469,7 +469,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.930061"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "5",
+	"hole" : 5,
 	"count" : "3",
 	"club" : "Putter",
 	"result" : "Green",
@@ -477,7 +477,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.923221"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "6",
+	"hole" : 6,
 	"count" : "0",
 	"club" : "",
 	"result" : "",
@@ -485,7 +485,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.923715"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "16",
+	"hole" : 16,
 	"count" : "1",
 	"club" : "Driver",
 	"result" : "Rough",
@@ -493,7 +493,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.930907"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "14",
+	"hole" : 14,
 	"count" : "4",
 	"club" : "9I",
 	"result" : "Green",
@@ -501,7 +501,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.929716"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "18",
+	"hole" : 18,
 	"count" : "4",
 	"club" : "Putter",
 	"result" : "Green",
@@ -509,7 +509,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.926498"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "4",
+	"hole" : 4,
 	"count" : "0",
 	"club" : "",
 	"result" : "",
@@ -517,7 +517,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.926045"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "4",
+	"hole" : 4,
 	"count" : "2",
 	"club" : "4I",
 	"result" : "Rough",
@@ -525,7 +525,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.922402"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "17",
+	"hole" : 17,
 	"count" : "6",
 	"club" : "Putter",
 	"result" : "Green",
@@ -533,7 +533,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.926369"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "5",
+	"hole" : 5,
 	"count" : "0",
 	"club" : "",
 	"result" : "",
@@ -541,7 +541,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.922442"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "14",
+	"hole" : 14,
 	"count" : "1",
 	"club" : "3W",
 	"result" : "Fairway",
@@ -549,7 +549,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.929612"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "14",
+	"hole" : 14,
 	"count" : "6",
 	"club" : "Putter",
 	"result" : "Cup in",
@@ -557,7 +557,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.929754"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "12",
+	"hole" : 12,
 	"count" : "0",
 	"club" : "",
 	"result" : "",
@@ -565,7 +565,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.927590"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "12",
+	"hole" : 12,
 	"count" : "1",
 	"club" : "7I",
 	"result" : "Green",
@@ -573,7 +573,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.928818"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "12",
+	"hole" : 12,
 	"count" : "3",
 	"club" : "Putter",
 	"result" : "Green",
@@ -581,7 +581,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.928974"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "13",
+	"hole" : 13,
 	"count" : "0",
 	"club" : "",
 	"result" : "",
@@ -589,7 +589,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.928585"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "13",
+	"hole" : 13,
 	"count" : "1",
 	"club" : "Driver",
 	"result" : "Fairway",
@@ -597,7 +597,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.928892"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "2",
+	"hole" : 2,
 	"count" : "4",
 	"club" : "Putter",
 	"result" : "Cup in",
@@ -605,7 +605,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.921941"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "12",
+	"hole" : 12,
 	"count" : "2",
 	"club" : "Putter",
 	"result" : "Green",
@@ -613,7 +613,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.928951"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "13",
+	"hole" : 13,
 	"count" : "6",
 	"club" : "Putter",
 	"result" : "Cup in",
@@ -621,7 +621,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.929515"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "5",
+	"hole" : 5,
 	"count" : "4",
 	"club" : "Putter",
 	"result" : "Cup in",
@@ -629,7 +629,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.923226"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "17",
+	"hole" : 17,
 	"count" : "3",
 	"club" : "7I",
 	"result" : "Rough",
@@ -637,7 +637,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.927325"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "17",
+	"hole" : 17,
 	"count" : "8",
 	"club" : "Putter",
 	"result" : "Cup in",
@@ -645,7 +645,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.926347"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "8",
+	"hole" : 8,
 	"count" : "2",
 	"club" : "7I",
 	"result" : "Rough",
@@ -653,7 +653,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.921223"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "8",
+	"hole" : 8,
 	"count" : "8",
 	"club" : "Putter",
 	"result" : "Cup in",
@@ -661,7 +661,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.921209"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "11",
+	"hole" : 11,
 	"count" : "1",
 	"club" : "Driver",
 	"result" : "Rough",
@@ -669,7 +669,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.927802"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "11",
+	"hole" : 11,
 	"count" : "2",
 	"club" : "8I",
 	"result" : "Green",
@@ -677,7 +677,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.927482"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "11",
+	"hole" : 11,
 	"count" : "3",
 	"club" : "Putter",
 	"result" : "Green",
@@ -685,7 +685,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.927443"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "9",
+	"hole" : 9,
 	"count" : "3",
 	"club" : "PW",
 	"result" : "Fairway",
@@ -693,7 +693,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.925465"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "13",
+	"hole" : 13,
 	"count" : "3",
 	"club" : "AW",
 	"result" : "Green",
@@ -701,7 +701,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.929414"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "13",
+	"hole" : 13,
 	"count" : "5",
 	"club" : "Putter",
 	"result" : "Green",
@@ -709,7 +709,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.929515"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "5",
+	"hole" : 5,
 	"count" : "2",
 	"club" : "AW",
 	"result" : "Green",
@@ -717,7 +717,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.923208"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "6",
+	"hole" : 6,
 	"count" : "1",
 	"club" : "3W",
 	"result" : "Rough",
@@ -725,7 +725,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.925379"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "14",
+	"hole" : 14,
 	"count" : "2",
 	"club" : "7I",
 	"result" : "Fairway",
@@ -733,7 +733,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.929178"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "6",
+	"hole" : 6,
 	"count" : "2",
 	"club" : "5I",
 	"result" : "Fairway",
@@ -741,7 +741,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.926028"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "3",
+	"hole" : 3,
 	"count" : "2",
 	"club" : "7I",
 	"result" : "Fairway",
@@ -749,7 +749,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.925400"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "3",
+	"hole" : 3,
 	"count" : "3",
 	"club" : "PW",
 	"result" : "Fairway",
@@ -757,7 +757,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.925801"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "3",
+	"hole" : 3,
 	"count" : "4",
 	"club" : "PW",
 	"result" : "Green",
@@ -765,7 +765,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.925951"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "3",
+	"hole" : 3,
 	"count" : "5",
 	"club" : "Putter",
 	"result" : "Cup in",
@@ -773,7 +773,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.925972"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "4",
+	"hole" : 4,
 	"count" : "5",
 	"club" : "Putter",
 	"result" : "Cup in",
@@ -781,7 +781,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.922464"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "9",
+	"hole" : 9,
 	"count" : "2",
 	"club" : "5I",
 	"result" : "Fairway",
@@ -789,7 +789,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.924645"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "4",
+	"hole" : 4,
 	"count" : "4",
 	"club" : "Putter",
 	"result" : "Green",
@@ -797,7 +797,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.922440"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "8",
+	"hole" : 8,
 	"count" : "0",
 	"club" : "",
 	"result" : "",
@@ -805,7 +805,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.922880"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "9",
+	"hole" : 9,
 	"count" : "1",
 	"club" : "3W",
 	"result" : "Rough",
@@ -813,7 +813,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.923541"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "9",
+	"hole" : 9,
 	"count" : "4",
 	"club" : "9I",
 	"result" : "Green",
@@ -821,7 +821,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.925140"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "10",
+	"hole" : 10,
 	"count" : "2",
 	"club" : "5I",
 	"result" : "Rough",
@@ -829,7 +829,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.927085"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "11",
+	"hole" : 11,
 	"count" : "0",
 	"club" : "",
 	"result" : "",
@@ -837,7 +837,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.928452"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "16",
+	"hole" : 16,
 	"count" : "3",
 	"club" : "SW",
 	"result" : "Green",
@@ -845,7 +845,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.931329"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "3",
+	"hole" : 3,
 	"count" : "0",
 	"club" : "",
 	"result" : "",
@@ -853,7 +853,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.923671"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "7",
+	"hole" : 7,
 	"count" : "6",
 	"club" : "Putter",
 	"result" : "Cup in",
@@ -861,7 +861,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.922943"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "1",
+	"hole" : 1,
 	"count" : "2",
 	"club" : "UT",
 	"result" : "Green",
@@ -869,7 +869,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.921939"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "10",
+	"hole" : 10,
 	"count" : "0",
 	"club" : "",
 	"result" : "",
@@ -877,7 +877,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.926960"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "10",
+	"hole" : 10,
 	"count" : "1",
 	"club" : "Driver",
 	"result" : "Fairway",
@@ -885,7 +885,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.927438"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "10",
+	"hole" : 10,
 	"count" : "3",
 	"club" : "AW",
 	"result" : "Green",
@@ -893,7 +893,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.927255"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "10",
+	"hole" : 10,
 	"count" : "5",
 	"club" : "Putter",
 	"result" : "Green",
@@ -901,7 +901,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.927304"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "14",
+	"hole" : 14,
 	"count" : "0",
 	"club" : "",
 	"result" : "",
@@ -909,7 +909,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.930360"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "14",
+	"hole" : 14,
 	"count" : "3",
 	"club" : "7I",
 	"result" : "Fairway",
@@ -917,7 +917,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.929513"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "14",
+	"hole" : 14,
 	"count" : "5",
 	"club" : "Putter",
 	"result" : "Green",
@@ -925,7 +925,7 @@ var SAMPLE_DATA = [ {
 	"longitude" : "138.929754"
 }, {
 	"date" : "2016-04-02",
-	"hole" : "6",
+	"hole" : 6,
 	"count" : "4",
 	"club" : "Putter",
 	"result" : "Green",

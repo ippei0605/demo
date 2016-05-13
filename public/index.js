@@ -262,6 +262,10 @@ $(function() {
 
 		// Submit 中はボタンを無効化する。
 		$('#scoreFormId').on('submit', function() {
+			// 緯度がセットされて無い場合は Submit しない。
+			if ($('#latitudeId').val() === '') {
+				return false;
+			}
 			setButton(true, true, true);
 		});
 

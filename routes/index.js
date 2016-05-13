@@ -50,11 +50,11 @@ exports.list = function(req, res) {
 	});
 };
 
-/** 位置情報を登録する。 */
-exports.create = function(req, res) {
-	var date = req.body.date;
-	var hole = req.body.hole;
-	var doc = {
+/** HTTP リクエストより位置情報を取得する。 */
+var getDoc = function(req) {
+	var date = getDate(req.body.date);
+	var hole = getHole(req.body.hole);
+	return {
 		"date" : date,
 		"hole" : hole,
 		"count" : req.body.count,
@@ -63,37 +63,30 @@ exports.create = function(req, res) {
 		"latitude" : req.body.latitude,
 		"longitude" : req.body.longitude
 	};
+};
+
+/** 位置情報を登録する。 */
+exports.create = function(req, res) {
+	var doc = getDoc(req);
 	score.save(doc, function() {
-		res.redirect('/?date=' + date + '&hole=' + hole);
+		res.redirect('/?date=' + doc.date + '&hole=' + doc.hole);
 	});
 };
 
 /** 位置情報を更新する。 */
 exports.update = function(req, res) {
-	var date = req.body.date;
-	var hole = req.body.hole;
-	var doc = {
-		"_id" : req.params._id,
-		"_rev" : req.params._rev,
-		"date" : date,
-		"hole" : hole,
-		"count" : req.body.count,
-		"club" : req.body.club,
-		"result" : req.body.result,
-		"latitude" : req.body.latitude,
-		"longitude" : req.body.longitude
-	};
+	var doc = getDoc(req);
+	doc._id = req.params._id;
+	doc._rev = req.params._rev;
 	score.save(doc, function() {
-		res.redirect('/?date=' + date + '&hole=' + hole);
+		res.redirect('/?date=' + doc.date + '&hole=' + doc.hole);
 	});
 };
 
 /** 位置情報を削除する。 */
 exports.remove = function(req, res) {
-	var date = req.body.date;
-	var hole = req.body.hole;
 	score.remove(req.params._id, req.params._rev, function() {
-		res.redirect('/?date=' + date + '&hole=' + hole);
+		res.redirect('/?date=' + req.body.date + '&hole=' + req.body.hole);
 	});
 };
 
