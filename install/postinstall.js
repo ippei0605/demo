@@ -1,9 +1,11 @@
 /**
- * @file Memo with Text Search アプリのインストール後処理
+ * @file Score Counter アプリのインストール後処理
  *
  * <pre>
- * ・データベース「memo」が無い場合は作成する。
- * ・「memo」に設計文書「_design/memos」が無い場合は作成する。
+ * ・データベース「score」が無い場合、
+ *   - データベースを作成する。
+ *   - サンプルデータを登録する。
+ * ・「score」に設計文書「_design/scores」が無い場合は作成する。
  * </pre>
  *
  * @author Ippei SUZUKI
