@@ -16,7 +16,7 @@
     > 以降、score-counter-ippei0605 で説明します。
 
 
-1. CF コマンド・ライン・インターフェースをインストールしていない場合は、インストールしてください。
+1. CF および Bluemix コマンド・ライン・インターフェースをインストールしていない場合は、インストールしてください。
 
 1. Cloudant NoSQL DB を作成し、score-counter-ippei0605 にバインドしてください。  
 サービス名: Cloudant NoSQL DB-go (固定)  
