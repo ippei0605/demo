@@ -11,38 +11,38 @@
 1. 本サイトから Score Counter アプリをダウンロード (Download ZIP) して解凍してください。ディレクトリ名は score-counter-master から score-counter に変更してください。
 
 1. Bluemix コンソールから CFアプリケーション (Node.js) を作成してください。  
-アプリケーション名: score-counter-ippei (任意)  
+アプリケーション名: score-counter-ippei0605 (任意)  
 
-    > 以降、score-counter-ippei で説明します。
+    > 以降、score-counter-ippei0605 で説明します。
 
 
 1. CF コマンド・ライン・インターフェースをインストールしていない場合は、インストールしてください。
 
-1. Cloudant NoSQL DB を作成し、score-counter-ippei にバインドしてください。  
+1. Cloudant NoSQL DB を作成し、score-counter-ippei0605 にバインドしてください。  
 サービス名: Cloudant NoSQL DB-go (固定)  
 
     > 名前を変更したい場合は、 utils/context.js の CLOUDANT_SERVICE_NAME の設定値を変更してください。
 
 1. 解凍したディレクトリ (Score Counter アプリのホーム) に移動してください。
 
-        > cd score-counter-ippei
+        > cd score-counter
 
 1. Bluemixに接続してください。
 
-        > cf api https://api.ng.bluemix.net
+        > bluemix api https://api.ng.bluemix.net
     
 
 1. Bluemix にログインしてください。(ユーザ、組織、スペースは御自身の環境に合わせて変更してください。)
 
-        > cf login -u e87782@jp.ibm.com -o e87782@jp.ibm.com -s dev
+        > bluemix login -u ippei0605@gmail.com -o ippei0605@gmail.com -s dev
 
 1. アプリをデプロイしてください。
 
-        > cf push score-counter-ippei
+        > cf push score-counter-ippei0605
 
 1. ご使用のブラウザーで以下の URL を入力して、アプリにアクセスしてください。
 
-        https://score-counter-ippei.mybluemix.net
+        https://score-counter-ippei0605.mybluemix.net
 
 
 ## 使い方
