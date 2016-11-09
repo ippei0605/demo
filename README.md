@@ -19,9 +19,7 @@
 1. CF および Bluemix コマンド・ライン・インターフェースをインストールしていない場合は、インストールしてください。
 
 1. Cloudant NoSQL DB を作成し、score-counter-ippei0605 にバインドしてください。  
-サービス名: Cloudant NoSQL DB-go (固定)  
-
-    > 名前を変更したい場合は、 utils/context.js の CLOUDANT_SERVICE_NAME の設定値を変更してください。
+サービス名: Cloudant NoSQL DB-go (任意)  
 
 1. 解凍したディレクトリ (Score Counter アプリのホーム) に移動してください。
 
