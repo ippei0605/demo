@@ -121,7 +121,7 @@ Reduce は Map 結果だけでなく、Reduce 結果も入力されます。 (re
 MapReduce と結果を以下に示します。 
 
 #### Map
-```
+```javascript
 function(doc) {
    if(doc.count !== '0') {
      var put = 0;
@@ -142,7 +142,7 @@ _sum
 ```
 
 #### 結果  
-```
+```json
 {"rows":[
     {"key":["2017-06-24",1],"value":{"count":4,"putt":2}},
     {"key":["2017-06-24",2],"value":{"count":4,"putt":2}},
