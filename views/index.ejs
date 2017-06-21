@@ -1,337 +1,345 @@
-<%# Score Counter アプリの地点情報一覧表示画面 Ippei SUZUKI %>
 <!DOCTYPE html>
 <html lang="ja">
 
 <head>
-<meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<title>Score Counter</title>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-	integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
-	crossorigin="anonymous">
-<link rel="stylesheet" href="/index.css">
-<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
-	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
-	crossorigin="anonymous"></script>
-<script type="text/javascript"
-	src="//maps.googleapis.com/maps/api/js?libraries=geometry&key=AIzaSyCGDCL9Cf2wYuTh0Er_KiqYlgasj-BRFds"></script>
-<script type="text/javascript" src="/index.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>Score Counter</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="/index.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <script src="//maps.googleapis.com/maps/api/js?libraries=geometry&key=AIzaSyCGDCL9Cf2wYuTh0Er_KiqYlgasj-BRFds"></script>
+    <script type="text/javascript" src="/index.js"></script>
 </head>
 
 <body>
 
-	<div class="container-fluid">
+<div class="container-fluid">
 
-		<div class="row">
-			<div class="col-xs-12 text-center">
-				<h1>Score Counter</h1>
-			</div>
-		</div>
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            <h1>Score Counter</h1>
+        </div>
+    </div>
 
-		<form id="scoreFormId" name="scoreForm" method="post" action="/scores">
+    <form id="scoreFormId" name="scoreForm" method="post" action="/scores">
 
-			<div class="row">
-				<div class="col-xs-6">Date</div>
-				<div class="col-xs-6">Hole</div>
-			</div>
+        <div class="row">
+            <div class="col-xs-6">Date</div>
+            <div class="col-xs-6">Hole</div>
+        </div>
 
-			<div class="row">
-				<div class="col-xs-6">
-					<input type="date" class="form-control" id="dateId" name="date"
-						value="<%= date %>">
-					</p>
-				</div>
+        <div class="row">
+            <div class="col-xs-6">
+                <input type="date" class="form-control" id="dateId" name="date"
+                       value="<%= date %>">
+                <br>
+            </div>
 
-				<div class="col-xs-1 col-sm-1">
+            <div class="col-xs-1 col-sm-1">
 					<span id="holeSpinDownId"
-						class="glyphicon glyphicon-chevron-left hole-spin"></span>
-				</div>
+                          class="glyphicon glyphicon-chevron-left hole-spin"></span>
+            </div>
 
-				<div class="col-xs-3  col-sm-4">
-					<input type="number" class="form-control" id="holeId" name="hole"
-						min="1" max="18" value="<%= hole %>">
-				</div>
+            <div class="col-xs-3  col-sm-4">
+                <input type="number" class="form-control" id="holeId" name="hole"
+                       min="1" max="18" value="<%= hole %>">
+            </div>
 
-				<div class="col-xs-2  col-sm-1 text-right">
+            <div class="col-xs-2  col-sm-1 text-right">
 					<span id="holeSpinUpId"
-						class="glyphicon glyphicon-chevron-right hole-spin"></span>
-				</div>
-			</div>
+                          class="glyphicon glyphicon-chevron-right hole-spin"></span>
+            </div>
+        </div>
 
-			<div class="row">
-				<div class="col-xs-6">
-					<button type="button" class="btn btn-primary btn-block"
-						id="teeShotId" name="teeShot">Tee Shot</button>
-				</div>
+        <div class="row">
+            <div class="col-xs-6">
+                <button type="button" class="btn btn-primary btn-block"
+                        id="teeShotId" name="teeShot">Tee Shot
+                </button>
+            </div>
 
-				<div class="col-xs-6">
-					<button type="button" class="btn btn-default btn-block"
-						id="addStrokeId" name="addStroke">+1 Stroke</button>
-				</div>
-			</div>
+            <div class="col-xs-6">
+                <button type="button" class="btn btn-default btn-block"
+                        id="addStrokeId" name="addStroke">+1 Stroke
+                </button>
+            </div>
+        </div>
 
-			<div class="row">
-				<div class="col-xs-6 text-center">
-					<select class="form-control" id="clubId" name="club">
-						<option value="">Select Club</option>
-						<option value="Driver">Driver</option>
-						<option value="3W">3W</option>
-						<option value="5W">5W</option>
-						<option value="UT">UT</option>
-						<option value="4I">4I</option>
-						<option value="5I">5I</option>
-						<option value="6I">6I</option>
-						<option value="7I">7I</option>
-						<option value="8I">8I</option>
-						<option value="9I">9I</option>
-						<option value="PW">PW</option>
-						<option value="AW">AW</option>
-						<option value="SW">SW</option>
-						<option value="Putter">Putter</option>
-					</select> <span id="clubMessageId" class="text-danger"></span>
-				</div>
+        <div class="row">
+            <div class="col-xs-6 text-center">
+                <select class="form-control" id="clubId" name="club">
+                    <option value="">Select Club</option>
+                    <option value="Driver">Driver</option>
+                    <option value="3W">3W</option>
+                    <option value="5W">5W</option>
+                    <option value="UT">UT</option>
+                    <option value="4I">4I</option>
+                    <option value="5I">5I</option>
+                    <option value="6I">6I</option>
+                    <option value="7I">7I</option>
+                    <option value="8I">8I</option>
+                    <option value="9I">9I</option>
+                    <option value="PW">PW</option>
+                    <option value="AW">AW</option>
+                    <option value="SW">SW</option>
+                    <option value="Putter">Putter</option>
+                </select> <span id="clubMessageId" class="text-danger"></span>
+            </div>
 
-				<div class="col-xs-6">
-					<button type="button"
-						class="btn btn-primary btn-block dropdown-toggle"
-						data-toggle="dropdown" id="recordId">
-						Point Record <span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu" role="menu">
-						<li id="resultFairwayId"><a href="#">Fairway</a></li>
-						<li id="resultRoughId"><a href="#">Rough</a></li>
-						<li id="resultGreenId"><a href="#">Green</a></li>
-						<li id="resultCreekId"><a href="#">Creek</a></li>
-						<li id="resultBunkerId"><a href="#">Bunker</a></li>
-						<li id="resultObId"><a href="#">OB</a></li>
-						<li id="resultCupinId"><a href="#">Cup in</a></li>
-					</ul>
-				</div>
-				<feildset> <input type="hidden" id="countId" name="count"
-					value=""> <input type="hidden" id="latitudeId"
-					name="latitude" value=""> <input type="hidden"
-					id="longitudeId" name="longitude" value=""> <input
-					type="hidden" id="resultId" name="result" value=""> </feildset>
-			</div>
-		</form>
+            <div class="col-xs-6">
+                <button type="button"
+                        class="btn btn-primary btn-block dropdown-toggle"
+                        data-toggle="dropdown" id="recordId">
+                    Point Record <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li id="resultFairwayId"><a href="#">Fairway</a></li>
+                    <li id="resultRoughId"><a href="#">Rough</a></li>
+                    <li id="resultGreenId"><a href="#">Green</a></li>
+                    <li id="resultCreekId"><a href="#">Creek</a></li>
+                    <li id="resultBunkerId"><a href="#">Bunker</a></li>
+                    <li id="resultObId"><a href="#">OB</a></li>
+                    <li id="resultCupinId"><a href="#">Cup in</a></li>
+                </ul>
+            </div>
+            <feildset><input type="hidden" id="countId" name="count"
+                             value=""> <input type="hidden" id="latitudeId"
+                                              name="latitude" value=""> <input type="hidden"
+                                                                               id="longitudeId" name="longitude"
+                                                                               value=""> <input
+                        type="hidden" id="resultId" name="result" value=""></feildset>
+        </div>
+    </form>
 
-		<div class="row">
-			<div class="col-xs-12">
-				</br>
-				<ul class="nav nav-tabs">
-					<li class="active"><a href="#scoreTabId" data-toggle="tab">Score</a></li>
-					<li><a href="#layoutTabId" data-toggle="tab">Layout</a></li>
-					<li><a href="#totalTabId" data-toggle="tab">Total</a></li>
-				</ul>
-				</br>
-				<div id="tabId" class="tab-content">
-					<div class="tab-pane in active" id="scoreTabId">
-						<div class="table-responsive">
-							<table class="table table-hover" id="tableId">
-								<thead>
-									<tr class="active">
-										<th style="display: none">Hole</th>
-										<th style="display: none">Stroke</th>
-										<th>Stroke</th>
-										<th>Club</th>
-										<th>Result</th>
-										<th>Lat</th>
-										<th>Lng</th>
-									</tr>
-								</thead>
-								<tbody>
-									<% var doc; list.forEach(function(row) { doc = row.value; %>
-									<tr>
-										<td style="display: none" id="tableHoleId"><%= doc.hole
-											%></td>
-										<td style="display: none" id="tableCountId"><%= doc.count
-											%></td>
-										<td
-											style="max-width: 300px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"><a
-											href="#" data-toggle="modal" data-target="#detail-dialog"
-											data-backdrop="static" data-backdrop="static"
-											data-keyboard="false"
-											data-action="/scores/<%= doc._id %>/<%= doc._rev %>"
-											data-count="<%= doc.count %>" data-club="<%= doc.club %>"
-											data-result="<%= doc.result %>"
-											data-latitude="<%= doc.latitude %>"
-											data-longitude="<%= doc.longitude %>"> <%= doc.count %> </a></td>
-										<td><%= doc.club %></td>
-										<td><%= doc.result %></td>
-										<td><%= doc.latitude %></td>
-										<td><%= doc.longitude %></td>
-									</tr>
-									<% }); %>
-								</tbody>
-							</table>
-						</div>
-					</div>
-					<div class="tab-pane" id="layoutTabId">
-						<div class="map-embed">
-							<div id="map-canvas">Course Layout</div>
-						</div>
-					</div>
+    <div class="row">
+        <div class="col-xs-12">
+            </br>
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#scoreTabId" data-toggle="tab">Score</a></li>
+                <li><a href="#layoutTabId" data-toggle="tab">Layout</a></li>
+                <li><a href="#totalTabId" data-toggle="tab">Total</a></li>
+            </ul>
+            </br>
+            <div id="tabId" class="tab-content">
+                <div class="tab-pane in active" id="scoreTabId">
+                    <div class="table-responsive">
+                        <table class="table table-hover" id="tableId">
+                            <thead>
+                            <tr class="active">
+                                <th style="display: none">Hole</th>
+                                <th style="display: none">Stroke</th>
+                                <th>Stroke</th>
+                                <th>Club</th>
+                                <th>Result</th>
+                                <th>Lat</th>
+                                <th>Lng</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <% var doc; list.forEach(function(row) { doc = row.value; %>
+                            <tr>
+                                <td style="display: none" id="tableHoleId"><%= doc.hole
+                                    %></td>
+                                <td style="display: none" id="tableCountId"><%= doc.count
+                                    %></td>
+                                <td
+                                        style="max-width: 300px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                    <a
+                                            href="#" data-toggle="modal" data-target="#detail-dialog"
+                                            data-backdrop="static" data-backdrop="static"
+                                            data-keyboard="false"
+                                            data-action="/scores/<%= doc._id %>/<%= doc._rev %>"
+                                            data-count="<%= doc.count %>" data-club="<%= doc.club %>"
+                                            data-result="<%= doc.result %>"
+                                            data-latitude="<%= doc.latitude %>"
+                                            data-longitude="<%= doc.longitude %>"> <%= doc.count %> </a></td>
+                                <td><%= doc.club %></td>
+                                <td><%= doc.result %></td>
+                                <td><%= doc.latitude %></td>
+                                <td><%= doc.longitude %></td>
+                            </tr>
+                            <% }); %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane" id="layoutTabId">
+                    <div class="map-embed">
+                        <div id="map-canvas">Course Layout</div>
+                    </div>
+                </div>
 
-					<div class="tab-pane" id="totalTabId">
-						<div class="table-responsive">
-							<table class="table table-hover">
-								<tr class="active">
-									<th>OUT</th>
-									<th>1</th>
-									<th>2</th>
-									<th>3</th>
-									<th>4</th>
-									<th>5</th>
-									<th>6</th>
-									<th>7</th>
-									<th>8</th>
-									<th>9</th>
-									<th>Half</th>
-									<th></th>
-								</tr>
-								<tr>
-									<td>Score</td>
-									<td id="C01Id"></td>
-									<td id="C02Id"></td>
-									<td id="C03Id"></td>
-									<td id="C04Id"></td>
-									<td id="C05Id"></td>
-									<td id="C06Id"></td>
-									<td id="C07Id"></td>
-									<td id="C08Id"></td>
-									<td id="C09Id"></td>
-									<td id="C01-09Id"></td>
-									<td></td>
-								</tr>
-								<tr>
-									<td>Putt</td>
-									<td id="P01Id"></td>
-									<td id="P02Id"></td>
-									<td id="P03Id"></td>
-									<td id="P04Id"></td>
-									<td id="P05Id"></td>
-									<td id="P06Id"></td>
-									<td id="P07Id"></td>
-									<td id="P08Id"></td>
-									<td id="P09Id"></td>
-									<td id="P01-09Id"></td>
-									<td></td>
-								</tr>
-								<tr class="active">
-									<th>IN</th>
-									<th>10</th>
-									<th>11</th>
-									<th>12</th>
-									<th>13</th>
-									<th>14</th>
-									<th>15</th>
-									<th>16</th>
-									<th>17</th>
-									<th>18</th>
-									<th>Half</th>
-									<th>Total</th>
-								</tr>
-								<tr>
-									<td>Score</td>
-									<td id="C10Id"></td>
-									<td id="C11Id"></td>
-									<td id="C12Id"></td>
-									<td id="C13Id"></td>
-									<td id="C14Id"></td>
-									<td id="C15Id"></td>
-									<td id="C16Id"></td>
-									<td id="C17Id"></td>
-									<td id="C18Id"></td>
-									<td id="C10-18Id"></td>
-									<td id="C01-18Id"></td>
-								</tr>
-								<tr>
-									<td>Putt</td>
-									<td id="P10Id"></td>
-									<td id="P11Id"></td>
-									<td id="P12Id"></td>
-									<td id="P13Id"></td>
-									<td id="P14Id"></td>
-									<td id="P15Id"></td>
-									<td id="P16Id"></td>
-									<td id="P17Id"></td>
-									<td id="P18Id"></td>
-									<td id="P10-18Id"></td>
-									<td id="P01-18Id"></td>
-								</tr>
-							</table>
-						</div>
-					</div>
+                <div class="tab-pane" id="totalTabId">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <tr class="active">
+                                <th>OUT</th>
+                                <th>1</th>
+                                <th>2</th>
+                                <th>3</th>
+                                <th>4</th>
+                                <th>5</th>
+                                <th>6</th>
+                                <th>7</th>
+                                <th>8</th>
+                                <th>9</th>
+                                <th>Half</th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <td>Score</td>
+                                <td id="C01Id"></td>
+                                <td id="C02Id"></td>
+                                <td id="C03Id"></td>
+                                <td id="C04Id"></td>
+                                <td id="C05Id"></td>
+                                <td id="C06Id"></td>
+                                <td id="C07Id"></td>
+                                <td id="C08Id"></td>
+                                <td id="C09Id"></td>
+                                <td id="C01-09Id"></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Putt</td>
+                                <td id="P01Id"></td>
+                                <td id="P02Id"></td>
+                                <td id="P03Id"></td>
+                                <td id="P04Id"></td>
+                                <td id="P05Id"></td>
+                                <td id="P06Id"></td>
+                                <td id="P07Id"></td>
+                                <td id="P08Id"></td>
+                                <td id="P09Id"></td>
+                                <td id="P01-09Id"></td>
+                                <td></td>
+                            </tr>
+                            <tr class="active">
+                                <th>IN</th>
+                                <th>10</th>
+                                <th>11</th>
+                                <th>12</th>
+                                <th>13</th>
+                                <th>14</th>
+                                <th>15</th>
+                                <th>16</th>
+                                <th>17</th>
+                                <th>18</th>
+                                <th>Half</th>
+                                <th>Total</th>
+                            </tr>
+                            <tr>
+                                <td>Score</td>
+                                <td id="C10Id"></td>
+                                <td id="C11Id"></td>
+                                <td id="C12Id"></td>
+                                <td id="C13Id"></td>
+                                <td id="C14Id"></td>
+                                <td id="C15Id"></td>
+                                <td id="C16Id"></td>
+                                <td id="C17Id"></td>
+                                <td id="C18Id"></td>
+                                <td id="C10-18Id"></td>
+                                <td id="C01-18Id"></td>
+                            </tr>
+                            <tr>
+                                <td>Putt</td>
+                                <td id="P10Id"></td>
+                                <td id="P11Id"></td>
+                                <td id="P12Id"></td>
+                                <td id="P13Id"></td>
+                                <td id="P14Id"></td>
+                                <td id="P15Id"></td>
+                                <td id="P16Id"></td>
+                                <td id="P17Id"></td>
+                                <td id="P18Id"></td>
+                                <td id="P10-18Id"></td>
+                                <td id="P01-18Id"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
 
-				</div>
-			</div>
-		</div>
-		<hr>
-	</div>
+            </div>
+        </div>
+    </div>
+    <hr>
+</div>
 
-	<div class="modal" id="dialog" tabindex="-1" role="dialog"
-		aria-labelledby="modalTitle" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content"></div>
-		</div>
-	</div>
+<div class="modal" id="dialog" tabindex="-1" role="dialog"
+     aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content"></div>
+    </div>
+</div>
 
-	<!-- 更新ダイアログ -->
-	<div class="modal" id="detail-dialog" tabindex="-1">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form id="detailScoreFormId" method="POST" action="/scores">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">
-							<span aria-hidden="true">&times;</span> <span class="sr-only">閉じる</span>
-						</button>
-						<h4 class="modal-title" id="modalTitle">Detail</h4>
-					</div>
-					<div class="modal-body">
-						<fieldset>
-							<div class="form-group">
-								<label for="detailCountId">Stroke</label> <input type="text"
-									class="form-control" id="detailCountId" name="count" value="">
-							</div>
-							<div class="form-group">
-								<label for="detailClubId">Club</label> <input type="text"
-									class="form-control" id="detailClubId" name="club" value="">
-							</div>
-							<div class="form-group">
-								<label for="detailResultId">Result</label> <input type="text"
-									class="form-control" id="detailResultId" name="result" value="">
-							</div>
-							<div class="form-group">
-								<label for="detailLatitudeId">Latitude</label> <input
-									type="text" class="form-control" id="detailLatitudeId"
-									name="latitude" value="">
-							</div>
-							<div class="form-group">
-								<label for="detailLongitudeId">Longitude</label> <input
-									type="text" class="form-control" id="detailLongitudeId"
-									name="longitude" value="">
-							</div>
-							<div>
-								<input type="hidden" id="detailDateId" name="date" value="">
-								<input type="hidden" id="detailHoleId" name="hole" value="">
-							</div>
-						</fieldset>
-					</div>
-					<div class="modal-footer">
-						<button id="detailSaveId" type="submit" class="btn btn-primary">Save</button>
-						<button id="detailCancelId" type="button" class="btn btn-default"
-							data-dismiss="modal">Cancel</button>
-						<button id="detailDeleteId" type="button" class="btn btn-danger"
-							data-dismiss="modal">Delete</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+<!-- 更新ダイアログ -->
+<div class="modal" id="detail-dialog" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="detailScoreFormId" method="POST" action="/scores">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span> <span class="sr-only">閉じる</span>
+                    </button>
+                    <h4 class="modal-title" id="modalTitle">Detail</h4>
+                </div>
+                <div class="modal-body">
+                    <fieldset>
+                        <div class="form-group">
+                            <label for="detailCountId">Stroke</label> <input type="text"
+                                                                             class="form-control" id="detailCountId"
+                                                                             name="count" value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="detailClubId">Club</label> <input type="text"
+                                                                          class="form-control" id="detailClubId"
+                                                                          name="club" value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="detailResultId">Result</label> <input type="text"
+                                                                              class="form-control" id="detailResultId"
+                                                                              name="result" value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="detailLatitudeId">Latitude</label> <input
+                                    type="text" class="form-control" id="detailLatitudeId"
+                                    name="latitude" value="">
+                        </div>
+                        <div class="form-group">
+                            <label for="detailLongitudeId">Longitude</label> <input
+                                    type="text" class="form-control" id="detailLongitudeId"
+                                    name="longitude" value="">
+                        </div>
+                        <div>
+                            <input type="hidden" id="detailDateId" name="date" value="">
+                            <input type="hidden" id="detailHoleId" name="hole" value="">
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="modal-footer">
+                    <button id="detailSaveId" type="submit" class="btn btn-primary">Save</button>
+                    <button id="detailCancelId" type="button" class="btn btn-default"
+                            data-dismiss="modal">Cancel
+                    </button>
+                    <button id="detailDeleteId" type="button" class="btn btn-danger"
+                            data-dismiss="modal">Delete
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 
 </html>
