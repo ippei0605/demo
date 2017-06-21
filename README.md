@@ -40,24 +40,24 @@
 (私は IntelliJ IDEA や Eclipse のターミナルを使っていますが、Windows の cmd 、Mac の　ターミナルなどで操作できます。)  
 
 1. ターミナルで、解凍したディレクトリ (score-counter アプリのホーム) に移動してください。(コマンドは以下、$はコマンドプロンプトです。)  
-  ```
-  $ cd score-counter
-  ```
+    ```
+    $ cd score-counter
+    ```
 
 1. ターミナルで、Bluemix にログインしてください。 (御自身の環境に合わせてパラメータを変更してください。)
-  ```
-  bx login -a https://api.eu-gb.bluemix.net -u ippei0605@gmail.com -c 545122579c1b042bb40fae74b21fe87b -o jiec_rd -s dev
-  ```
+    ```
+    $ bx login -a https://api.eu-gb.bluemix.net -u ippei0605@gmail.com -c 545122579c1b042bb40fae74b21fe87b -o jiec_rd -s dev
+    ```
 
 1. ターミナルで、アプリをデプロイしてください。  
-  ```
-  $ bx app push score-counter-ippei0605
-  ```
+    ```
+    $ bx app push score-counter-ippei0605
+    ```
 
 1. ご使用のブラウザーで以下の URL を入力して、アプリにアクセスしてください。
-
-        https://score-counter-ippei0605.mybluemix.net
-
+    ```
+    https://score-counter-ippei0605.mybluemix.net
+    ```
 
 ## 使い方
 1. 2017-06-24 にサンプルデータを登録しています。花咲カントリークラブ (山梨県) 1H～18H です。まずは、Hole を変更しつつ、Score、Layout、Total タブの表示内容を確認してください。
