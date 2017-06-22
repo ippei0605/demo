@@ -35,6 +35,6 @@ app.post('/scores/:_id/:_rev/delete', routes.remove);
 app.get('/total', routes.total);
 
 // リクエストを受付ける。
-app.listen(context.appEnv.port, function () {
+app.listen(context.appEnv.port, () => {
     console.log('server starting on ' + context.appEnv.url);
 });
